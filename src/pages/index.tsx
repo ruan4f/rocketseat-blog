@@ -1,4 +1,5 @@
 import { GetStaticProps } from 'next';
+import { Head } from 'next/document';
 
 import { getPrismicClient } from '../services/prismic';
 
@@ -24,13 +25,30 @@ interface HomeProps {
   postsPagination: PostPagination;
 }
 
-// export default function Home() {
-//   // TODO
-// }
+export default function Home() {
+  // TODO
 
-// export const getStaticProps = async () => {
-//   // const prismic = getPrismicClient({});
-//   // const postsResponse = await prismic.getByType(TODO);
+  return (
+    <>
+      <Head>
+        <title>Home | ig.news</title>
+      </Head>
 
-//   // TODO
-// };
+      <main className={styles.contentContainer}>
+        
+      </main>
+    </>
+  );
+}
+
+export const getStaticProps = async () => {
+  const prismic = getPrismicClient({});
+  const postsResponse = await prismic.getByType('TODO');
+
+  return {
+    props: {
+      
+    },
+    revalidate: 60 * 60 * 24,
+  };
+};

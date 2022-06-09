@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import { Head } from 'next/document';
+import Head from 'next/head'
 
 import { getPrismicClient } from '../services/prismic';
 
@@ -47,7 +47,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      
+      posts: null,
     },
     revalidate: 60 * 60 * 24,
   };

@@ -35,7 +35,7 @@ export default function Home() {
       </Head>
 
       <main className={styles.contentContainer}>
-        
+        <button>Carregar mais posts</button>
       </main>
     </>
   );

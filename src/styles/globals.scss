@@ -38,3 +38,12 @@ body {
 button {
   cursor: pointer;
 }
+
+body,
+input,
+textarea,
+select,
+button,
+a {
+  font: 400 1rem 'Inter', sans-serif;
+}

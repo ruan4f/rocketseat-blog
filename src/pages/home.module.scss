@@ -14,6 +14,13 @@
   margin: 5rem auto 0;
 
   a {
+    display: block;    
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+
     color: var(--pink-700);
     cursor: pointer;
   }

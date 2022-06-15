@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Home | ig.news</title>
+        <title>Home | Blog</title>
       </Head>
 
       <main className={styles.contentContainer}>

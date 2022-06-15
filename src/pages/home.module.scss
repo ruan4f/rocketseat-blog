@@ -7,4 +7,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+
+}
+
+.posts {
+
+
+  a {
+    display: block;
+    color: var(--pink-700);
+    cursor: pointer;
+  }
 }

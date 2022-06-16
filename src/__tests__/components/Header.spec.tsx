@@ -37,7 +37,7 @@ describe('Header', () => {
     const secondLink = screen.getByAltText('logo');
 
     fireEvent.click(secondLink);
-
+    
     expect(mockedPush).toHaveBeenCalledWith(
       '/',
       expect.anything(),

@@ -63,26 +63,9 @@ export const getStaticProps: GetStaticProps = async () => {
   const prismic = getPrismicClient({});
   const postsResponse = await prismic.getByType('posts');
 
-  /*const posts = postsResponse.results.map((post) => {
-    return {
-      uid: post.uid,
-      first_publication_date: new Date(post.first_publication_date).toLocaleDateString('pt-BR', {
-        day: '2-digit',
-        month: 'long',
-        year: 'numeric',
-      }),
-      data: {
-        title: RichText.asText(post.data.title),
-        subtitle: RichText.asText(post.data.subtitle),
-        author: RichText.asText(post.data.author),
-      }
-    };
-  });*/
-
   return {
     props: {
       postsPagination: { next_page: postsResponse.next_page, results: postsResponse.results },
-    },
-    revalidate: 60 * 60 * 24,
+    }
   };
 };

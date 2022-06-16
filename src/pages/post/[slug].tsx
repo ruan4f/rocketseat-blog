@@ -1,7 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { getPrismicClient } from '../../services/prismic';
-
+import { format } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 import commonStyles from '../../styles/common.module.scss';
 import styles from './post.module.scss';
 
@@ -39,7 +40,7 @@ export default function Post({ post }: PostProps) {
           <img src={post.data?.banner?.url} alt="banner" />
           <h1>{post.data.title}</h1>
           <time>{post.first_publication_date}</time>
-          
+
         </article>
       </main>
     </>
@@ -63,14 +64,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const prismic = getPrismicClient({});
   const response = await prismic.getByUID('posts', String(slug), {});
 
-  console.log(slug);
-  console.log(JSON.stringify(response, null, 2));
+  const dateToString = format(
+    new Date(response.first_publication_date),
+    "d MMM yyyy",
+    {
+      locale: ptBR,
+    }
+  );
 
   const post = {
-    first_publication_date: response.first_publication_date,
+    first_publication_date: dateToString,
     data: response.data
   }
 
   // TODO
-  return { props: { post }, revalidate: 60 * 60 * 24 };
+  return { props: { post } };
 };

@@ -26,7 +26,7 @@ interface PostProps {
   post: Post;
 }
 
-export default function Post() {
+export default function Post({ post }: PostProps) {
   // TODO
   return (
     <>
@@ -61,6 +61,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   console.log(slug);
   console.log(JSON.stringify(response, null, 2));
 
+  const post = {
+    first_publication_date: response.first_publication_date,
+    data: response.data
+  }
+
   // TODO
-  return { props: {}, revalidate: 60 * 60 * 24 };
+  return { props: { post }, revalidate: 60 * 60 * 24 };
 };

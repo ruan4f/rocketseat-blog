@@ -2,6 +2,8 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { RichText } from 'prismic-dom';
+
+import { FiCalendar, FiUser } from "react-icons/fi";
 import { getPrismicClient } from '../services/prismic';
 
 import commonStyles from '../styles/common.module.scss';
@@ -42,8 +44,8 @@ export default function Home({ postsPagination: { next_page, results } }: HomePr
               <a>
                 <strong>{post.data.title}</strong>
                 <p>{post.data.subtitle}</p>
-                <span>{post.first_publication_date}</span>
-                <span>{post.data.author}</span>
+                <span><FiCalendar /><time>{post.first_publication_date}</time></span>
+                <span><FiUser />{post.data.author}</span>
               </a>
             </Link>
           ))}

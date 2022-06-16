@@ -1,5 +1,6 @@
 import { GetStaticProps } from 'next';
-import Head from 'next/head'
+import Head from 'next/head';
+import Link from 'next/link';
 
 import { getPrismicClient } from '../services/prismic';
 
@@ -25,7 +26,7 @@ interface HomeProps {
   postsPagination: PostPagination;
 }
 
-export default function Home({ postsPagination }: HomeProps) {
+export default function Home({ postsPagination: { next_page, results } }: HomeProps) {
   // TODO
 
   return (
@@ -36,6 +37,17 @@ export default function Home({ postsPagination }: HomeProps) {
 
       <main className={styles.contentContainer}>
         <div className={styles.posts}>
+          {results.map((post: Post) => (
+            <Link key={post.uid} href={`/post/${post.uid}`}>
+              <a>                
+                <strong>{post.data.title}</strong>
+                <p>{post.data.subtitle}</p>
+                <span>{post.first_publication_date}</span>
+                <span>{post.data.author}</span>
+              </a>
+            </Link>
+          ))}
+
           <a>Carregar mais posts</a>
         </div>
       </main>

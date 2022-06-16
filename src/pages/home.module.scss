@@ -32,14 +32,23 @@
 
     p {
       color: var(--body);
-      margin-top: 0.5rem;
+      padding-top: 1rem;
       line-height: 1.625rem;
     }
 
     span {
+       display: block;
       color: var(--info);
       font-size: 1rem;
+      padding-top: 1rem;
 
+      svg {
+        margin-right: 0.5rem;
+      }
+
+      time {
+        margin-right: 1rem;
+      }
     }
 
     &:hover strong {

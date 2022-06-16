@@ -44,8 +44,10 @@ export default function Home({ postsPagination: { next_page, results } }: HomePr
               <a>
                 <strong>{post.data.title}</strong>
                 <p>{post.data.subtitle}</p>
-                <span><FiCalendar /><time>{post.first_publication_date}</time></span>
-                <span><FiUser />{post.data.author}</span>
+                <span>
+                  <FiCalendar /><time>{post.first_publication_date}</time>
+                  <FiUser />{post.data.author}
+                </span>
               </a>
             </Link>
           ))}

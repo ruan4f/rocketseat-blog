@@ -48,7 +48,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: [{ params: { slug: 'como-utilizar-hooks' } }, { params: { slug: 'criando-um-app-cra-do-zero' } }],
-    fallback: 'blocking',
+    fallback: true,
   };
 };
 

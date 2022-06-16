@@ -34,7 +34,7 @@ export default function Home({ postsPagination: { next_page, results } }: HomePr
   return (
     <>
       <Head>
-        <title>Home | Blog</title>
+        <title>Blog | Home</title>
       </Head>
 
       <main className={styles.contentContainer}>

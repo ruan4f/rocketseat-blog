@@ -37,17 +37,17 @@ export const getStaticPaths = async () => {
   // TODO
 
   return {
-    paths: [{ params: { slug: '' } }],
+    paths: [{ params: { slug: 'como-utilizar-hooks' } }, { params: { slug: 'criando-um-app-cra-do-zero' } }],
     fallback: 'blocking',
   };
 };
 
-export const getStaticProps = async ({params }) => {
+export const getStaticProps = async ({ params }) => {
   const { slug } = params;
-  
+
   const prismic = getPrismicClient({});
   const response = await prismic.getByUID('posts', String(slug), {});
 
   // TODO
-  return { props: {  }, revalidate: 60 * 60 * 24 };
+  return { props: {}, revalidate: 60 * 60 * 24 };
 };

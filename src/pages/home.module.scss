@@ -5,7 +5,7 @@
   height: calc(100vh - 5rem);
 
   display: flex;
-  align-items: center;
+  align-items: left;
   justify-content: space-between;
 }
 
@@ -14,14 +14,36 @@
   margin: 5rem auto 0;
 
   a {
-    display: block;    
+    display: block;
 
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 22px;
+    & + a {
+      margin-top: 2rem;
+      padding-top: 2rem;
+    }    
 
-    color: var(--pink-700);
-    cursor: pointer;
+    strong {
+      display: block;
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      line-height: 2rem;    
+      transition: color 0.2s;
+    }
+
+    p {
+      color: var(--gray-300);
+      margin-top: 0.5rem;
+      line-height: 1.625rem;
+    }
+
+    time {
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      color: var(--gray-300);
+    }
+
+    &:hover strong {
+      color: var(--yellow-500);
+    }
   }
 }

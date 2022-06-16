@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
-
+import { RichText } from 'prismic-dom';
 import { getPrismicClient } from '../services/prismic';
 
 import commonStyles from '../styles/common.module.scss';
@@ -39,7 +39,7 @@ export default function Home({ postsPagination: { next_page, results } }: HomePr
         <div className={styles.posts}>
           {results.map((post: Post) => (
             <Link key={post.uid} href={`/post/${post.uid}`}>
-              <a>                
+              <a>
                 <strong>{post.data.title}</strong>
                 <p>{post.data.subtitle}</p>
                 <span>{post.first_publication_date}</span>
@@ -55,13 +55,29 @@ export default function Home({ postsPagination: { next_page, results } }: HomePr
   );
 }
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const prismic = getPrismicClient({});
-  const postsResponse = await prismic.getByType('TODO');
+  const postsResponse = await prismic.getByType('posts');
+
+  /*const posts = postsResponse.results.map((post) => {
+    return {
+      uid: post.uid,
+      first_publication_date: new Date(post.first_publication_date).toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+      }),
+      data: {
+        title: RichText.asText(post.data.title),
+        subtitle: RichText.asText(post.data.subtitle),
+        author: RichText.asText(post.data.author),
+      }
+    };
+  });*/
 
   return {
     props: {
-      posts: null,
+      postsPagination: { next_page: postsResponse.next_page, results: postsResponse.results },
     },
     revalidate: 60 * 60 * 24,
   };

@@ -27,15 +27,20 @@ interface PostProps {
 }
 
 export default function Post({ post }: PostProps) {
-  // TODO
+  //TODO
   return (
     <>
       <Head>
         <title>Blog | Post</title>
       </Head>
 
-      <main>
-
+      <main className={styles.container}>
+        <article className={styles.post}>
+          <img src={post.data?.banner?.url} alt="banner" />
+          <h1>{post.data.title}</h1>
+          <time>{post.first_publication_date}</time>
+          
+        </article>
       </main>
     </>
   );

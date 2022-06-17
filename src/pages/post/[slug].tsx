@@ -36,15 +36,12 @@ export default function Post({ post }: PostProps) {
     return <p>Carregando...</p>;
   }
 
-  /*const totalWords = post.data.content.reduce((total, contentItem) => {
-    total += contentItem.heading.split(' ').length;
+  const readTime = post.data.content.reduce((acc, time) => {
+    const total = RichText.asText(time.body).split(' ');
 
-    const words = contentItem.body.map(item => item.text.split(' ').length);
-    words.map(word => (total += word));
-    return total;
-  }, 0);*/
-
-  const readTime = Math.ceil(/*totalWords*/200 / 200);
+    const min = Math.ceil(total.length / 200);
+    return acc + min;
+  }, 0);
 
   return (
     <>
@@ -67,15 +64,17 @@ export default function Post({ post }: PostProps) {
           </span>
 
           <span>
-            <FiClock />
-            {readTime} min
+            <FiClock />            
+            {`${readTime} min`}
           </span>
         </div>
         <section className={styles.postContent}>
           {post.data.content.map(p => (
             <div key={p.heading}>
               <strong>{p.heading}</strong>
-              
+              <div
+                dangerouslySetInnerHTML={{ __html: RichText.asHtml(p.body) }}
+              />
             </div>
           ))}
         </section>
@@ -108,12 +107,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const prismic = getPrismicClient({});
   const response = await prismic.getByUID('posts', String(slug), {});
 
-  const dateToString = format(new Date(response.first_publication_date), "d MMM yyyy", { locale: ptBR, });
-
   const post = {
-    first_publication_date: dateToString,
-    data: response.data
-  }
+    uid: response.uid,
+    first_publication_date: response.first_publication_date,
+    data: {
+      ...response.data,
+    },
+  };
 
   return { props: { post } };
 };

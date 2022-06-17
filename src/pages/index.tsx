@@ -51,8 +51,7 @@ export default function Home({ postsPagination: { next_page, results } }: HomePr
               </a>
             </Link>
           ))}
-
-          <button>Carregar mais posts</button>
+          {next_page ? <button>Carregar mais posts</button> : ''}
         </div>
       </main>
     </>

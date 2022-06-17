@@ -1,4 +1,4 @@
-# Blog - Space Traveling
+# Blog - React
 
 ![mock1](https://user-images.githubusercontent.com/71772559/113493479-eceeda80-94b5-11eb-94ea-59e50e56a31f.png)
 

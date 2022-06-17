@@ -14,7 +14,6 @@
 * Integração com o Prismic CMS, para trabalhar com toda a parte do sistema do blog.
 * Integração com o sistema de Preview do Prismic, onde é possível ver um post não publicado dentro do blog, antes mesmo dele ir ao ar.
 * Uso do sistema estático do Next.js, onde os posts são mantidos no cache para um melhor carregamento.
-* Sistema de comentários usando o Utteranc.
 
 &nbsp;
 

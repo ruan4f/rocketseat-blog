@@ -9,8 +9,13 @@
   margin: 3rem auto;
 
   strong {
-    font-size: 3.2rem;
+    font-size: 1.8rem;
     font-weight: 700;
+    line-height: 3rem;
+  }
+
+  a {
+    color:var(--highlight)
   }
 }
 
@@ -19,6 +24,8 @@
   color: var(--gray-300);
   display: flex;
   align-items: center;
+
+  
 
   time {
     display: flex;
@@ -48,11 +55,6 @@
   div {
     margin-top: 2rem;
     max-width: 720px;
-  }
-
-  strong {
-    font-size: 2.2rem;
-    color: var(--gray-50);
   }
 
   p {

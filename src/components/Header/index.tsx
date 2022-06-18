@@ -3,12 +3,12 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className={styles.headerContainer}>
-      <div className={styles.headerContent}>
-        <Link href="/">
+    <header className={styles.postHeader}>
+      <Link href="/">
+        <a>
           <img src="/images/logo.svg" alt="logo" />
-        </Link>
-      </div>
+        </a>
+      </Link>
     </header>
   );
 }

@@ -71,7 +71,7 @@ export default function Post({ post }: PostProps) {
         <section className={styles.postContent}>
           {post.data.content.map(p => (
             <div key={p.heading}>
-              <strong>{p.heading}</strong>
+              <strong>{p.heading}</strong>              
               <div
                 dangerouslySetInnerHTML={{ __html: RichText.asHtml(p.body) }}
               />
@@ -107,6 +107,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const prismic = getPrismicClient({});
   const response = await prismic.getByUID('posts', String(slug), {});
 
+  console.log(JSON.stringify(response, null, 2));
+  
   const post = {
     uid: response.uid,
     first_publication_date: response.first_publication_date,
